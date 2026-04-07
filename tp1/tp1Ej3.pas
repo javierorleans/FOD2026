@@ -23,7 +23,9 @@ procedure menu();
 	writeln('2 - Listar en pantalla los empleados de a uno por línea.');
 	writeln('3 - Listar en pantalla los empleados mayores de 70 años, próximos a jubilarse.');
 	writeln('11 - Imprimir todos los empleados.');
-	write('Elija una opción. 99 para salir: ');
+	writeln('99 - SALIR >>>');
+	writeln('-');
+	write('Elija una opción: ');
 	end;
 
 procedure carga(var arch: emple);
@@ -77,9 +79,96 @@ procedure imprimirTodo(var arch: emple);
 		unoPorLinea(e);		
 		end;
 	close(arch);
+	writeln();
+	writeln();
 	end;
 	
+procedure buscar(var arch: emple);
+	var
+	e: empleado;
+	op: char;
+	busqueda: string;
+	existe: boolean;
+	
+	begin
+	existe:= false;
+	reset(arch);
+	write('--- ¿Busqueda por nombre (n) o apellido (a)?. Ingresar letra: ');
+	readln(op);
+	if(op = 'n') then 
+		begin
+		write('Ingrese nombre a buscar: ');
+		readln(busqueda);
+		end
+	else
+		begin
+		write('Ingrese apellido a buscar: ');
+		readln(busqueda);
+		end;	
+	writeln(' - Resultados - ');
+	while not EOF (arch) do
+		begin
+		read(arch, e);
+		case op of
+			'n': 	begin
+					if(e.nombre = busqueda)then 
+						begin
+						unoPorLinea(e);
+						existe:= true;
+						end;	
+					end;					
+			'a':	begin
+					if(e.apellido = busqueda)then 
+						begin
+						unoPorLinea(e);
+						existe:= true;
+						end;
+					end;		
+			end;
+		end;	
+	close(arch);	
+	if (not existe) then writeln('No se encontró lo solicitado...');
+	writeln();
+	writeln();
+	end;
+	
+procedure verDeAUno(var arch: emple);
+	var
+	e: empleado;
+	
+	begin
+	reset(arch);
+	writeln();
+	writeln('-- Listado de a uno. Para ver el siguiente, presionar Enter: ');
+	while not EOF(arch)do
+		begin
+		read(arch, e);
+		unoPorLinea(e);
+		readln();
+		end;
+	writeln();
+	writeln();
+	close(arch);
+	end;
 
+procedure mayoresDe70(var arch: emple);
+	var
+	e: empleado;
+	
+	begin
+	reset(arch);
+	writeln();
+	writeln('--- Listado de Empleados Mayores de 70 años: ');
+	while not EOF(arch)do
+		begin
+		read(arch, e);
+		if(e.edad > 70) then unoPorLinea(e);
+		end;
+	writeln();
+	writeln();
+	close(arch);
+	end;
+	
 var
 arch_emple: emple;
 opcion: integer;
@@ -96,6 +185,9 @@ while(opcion <> 99) do
 	readln(opcion);
 	case opcion of
 		0: carga(arch_emple);
+		1: buscar(arch_emple);
+		2: verDeAUno(arch_emple);
+		3: mayoresDe70(arch_emple);
 		11: imprimirTodo(arch_emple);		
 		end;
 	end;
