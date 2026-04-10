@@ -251,14 +251,61 @@ procedure modificarUnaEdad(var arch: emple);
 	close(arch);
 	end;
 	
+procedure exportarTodo(var arch: emple; var unTxt: Text);
+	var
+	nomFisico: string;
+	e: empleado;
 	
+	begin
+	write('Ingrese nombre del archivo de txt: '); // todos_empleados.txt
+	readln(nomFisico);
+	writeln('--- Se exportaran todos los empleados al archivo ', nomFisico);
+	assign(unTxt, nomFisico);
+	rewrite(unTxt);
+	reset(arch);
+	while not EOF(arch)do
+		begin
+		read(arch, e);
+		writeln(unTxt, e.num, ' ', e.apellido, ' ', e.nombre, ' ', e.edad, ' ', e.dni);
+		end;	
+	writeln('Exportación exitosa !!!');
+	writeln();
+	close(unTxt);
+	close(arch);
+	end;
+
+procedure exportarDniCero(var arch: emple; var unTxt: Text);
+	var
+	nomFisico: string;
+	e: empleado;
+	
+	begin
+	write('Ingrese nombre del archivo de txt: '); // faltaDNIEmpleado.txt	
+	readln(nomFisico);
+	writeln('--- Se exportaran todos los empleados con DNI = 0 al archivo ', nomFisico);
+	assign(unTxt, nomFisico);
+	rewrite(unTxt);
+	reset(arch);
+	while not EOF(arch)do
+		begin
+		read(arch, e);
+		if(e.dni = 0)then writeln(unTxt, e.num, ' ', e.apellido, ' ', e.nombre, ' ', e.edad, ' ', e.dni);
+		end;	
+	writeln('Exportación exitosa !!!');
+	writeln();
+	close(unTxt);
+	close(arch);
+	end;
+
 var
 arch_emple: emple;
 opcion: integer;
 nomFisico: string;
+todos: Text;
+algunos: Text;
 
 begin
-write('Ingrese nombre del archivo: '); //empleadosTp1Ej4
+write('Ingrese nombre del archivo: '); // empleadosTp1Ej4
 readln(nomFisico);
 assign(arch_emple, nomFisico);
 opcion:= 22; //hardcodeo
@@ -273,6 +320,8 @@ while(opcion <> 99) do
 		3: mayoresDe70(arch_emple);
 		4: agregarEmpleado(arch_emple);
 		5: modificarUnaEdad(arch_emple);
+		6: exportarTodo(arch_emple, todos);
+		7: exportarDniCero(arch_emple, algunos);
 		11: imprimirTodo(arch_emple);		
 		end;
 	end;
