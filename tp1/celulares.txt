@@ -1,9 +1,12 @@
-101 250000 Samsung
+101 250000.00 Samsung
 15 5 Galaxy A15 128GB
 Galaxy A15
-102 320000 Motorola
-3 6 Moto G84 256GB color azul
+102 320000.00 Motorola
+33 6 Moto G84 256GB color azul
 Moto G84
-104 950000 Apple
+104 950000.00 Apple
 2 4 iPhone 15 256GB negro
 iPhone 15
+90 24000.00 Nokia
+0 10 Irrompible y simple
+Nokia 1100
