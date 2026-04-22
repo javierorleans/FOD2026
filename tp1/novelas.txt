@@ -1,0 +1,12 @@
+1 2500 Drama
+Sobre heroes y tumbas
+2 1800 Fantasia
+El libro de arena
+3 3200 Realismo
+Rayuela
+4 2100 Policial
+Plata quemada
+5 2750 Historica
+La revolucion es un suenio eterno
+6 1950 CienciaFiccion
+El eternauta
