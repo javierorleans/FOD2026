@@ -65,6 +65,53 @@ procedure imprimirTodas(var arch: novelas);
 		end;
 	close(arch);
 	end;
+
+function existeCodigo(var arch: novelas; cod: integer): boolean;
+	var
+	n: novela;
+	existe: boolean;
+	
+	begin
+	// Al ejecutarlo debe estar en la primera posicion
+	existe:= false;
+	while (not EOF(arch) and (not existe))do
+		begin
+		read(arch, n);
+		if(n.codigo = cod)then
+			begin
+			existe:= true;
+			end;
+		end;
+	seek(arch, 0);
+	existeCodigo:= existe;
+	// Al finalizar debe quedar en la primera posicion
+	end;
+
+	
+procedure agregarNovela(var arch: novelas);
+	var
+	n: novela;
+	
+	begin
+	reset(arch);
+	writeln('----- NUEVA NOVELA -----');
+	write('* Ingrese codigo');
+	readln(n.codigo);
+	while(existeCodigo(arch, n.codigo))do
+		begin
+		write(' FATAL : Codigo existente. Ingrese otro codigo: ');
+		readln(n.codigo);
+		end;
+	
+	write('* Ingrese nombre del libro: ');
+	readln(n.nombre);
+	write('* Ingrese genero literario: ');
+	readln(n.genero);
+	write('* Ingrese precio: ');
+	readln(n.precio);
+	seek(arch, filesize(arch));
+	close(arch);
+	end;
  
 var
 archNovelas: novelas;
@@ -85,7 +132,7 @@ while (opcion <> 99) do
 	readln(opcion);
 	case opcion of
 		1: importar(archTxt, archNovelas);
-		
+		2: agregarNovela(archNovelas);
 		55: imprimirTodas(archNovelas);
 		else 
 			writeln('----- OPCION INCORRECTA ..!!!');
