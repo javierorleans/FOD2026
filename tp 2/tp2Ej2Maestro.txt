@@ -1,0 +1,60 @@
+1001 150.50 30 
+10
+Detergente Ultra
+1002 75.00 50 
+20
+Lavandina Pura
+1003 60.25 40 
+15
+Jabón Líquido
+1004 120.00 25 
+8
+Desinfectante Floral
+1005 90.00 45 
+12
+Limpiavidrios Crystal
+1006 200.00 15 
+5
+Cera para Pisos
+1007 180.75 20 
+7
+Shampoo para Alfombras
+1008 85.90 35 
+10
+Limpiador Multiuso
+1009 95.00 40 
+10
+Desengrasante de Cocina
+1010 65.00 55 
+18
+Ambientador Cítrico
+1011 110.00 22 
+7
+Pulidor de Muebles
+1012 135.50 18 
+5
+Blanqueador de Ropa
+1013 70.25 60 
+20
+Limpiador de Baños
+1014 125.00 20 
+8
+Desinfectante de Manos
+1015 155.75 12 
+4
+Removedor de Manchas
+1016 170.00 10 
+3
+Gel Antibacterial
+1017 90.50 38 
+10
+Aromatizador de Ambientes
+1018 145.00 14 
+5
+Desodorizante de Ambientes
+1019 200.25 8 
+2
+Cloro Granulado
+1020 80.00 50 
+15
+Paño de Microfibra
